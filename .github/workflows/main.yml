@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          eslint --ext .jsx --fix src
+          npx eslint --ext .jsx --fix src
   test:
     needs: lint
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          vitest run
+          npm run test
           echo "Tests completed successfully"
   
         

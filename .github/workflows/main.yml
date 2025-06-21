@@ -1,0 +1,52 @@
+name: Practise Workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Node.js Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm ci
+          vite build
+          echo "Build completed successfully"
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Node.js Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm ci
+          eslint --ext .jsx --fix src
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Node.js Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm ci
+          vitest run
+          echo "Tests completed successfully"
+  
+        
+          
+           
+
+          

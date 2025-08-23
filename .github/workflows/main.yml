@@ -1,6 +1,12 @@
-name: Manually trigger a workflow using `workflow_dispatch` with user input
-description: Manually trigger a workflow with user input for deployment in different environments
+name: Trigger workflow only when files under src/** are modified
+description: Trigger workflow only when files under src/** are modified
 on:
+  push:
+    paths:
+      - 'src/**'
+  pull_request:
+    paths:
+      - 'src/**'
   workflow_dispatch:
     inputs:
       environment:

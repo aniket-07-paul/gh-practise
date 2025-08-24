@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     needs: [lint, test]
     runs-on: ${{ matrix.operating-system }}
     steps: 
@@ -63,7 +63,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
@@ -81,7 +81,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: DEV
     if: ${{ github.event.inputs.environment == 'DEV' }}
@@ -100,7 +100,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: QA
     if: ${{ github.event.inputs.environment == 'QA' }}
@@ -118,7 +118,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: ubuntu-latest
+        operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: PROD
     if: ${{ github.event.inputs.environment == 'PROD' }}

@@ -9,7 +9,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run"
-    "node-version": "node -v"
   },
   "dependencies": {
     "prop-types": "^15.8.1",

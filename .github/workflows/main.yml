@@ -78,7 +78,11 @@ jobs:
         run: npm test
   DEV_Deploy:
     needs: build
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        operating-system: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
     environment: DEV
     if: ${{ github.event.inputs.environment == 'DEV' }}
     steps:
@@ -93,7 +97,11 @@ jobs:
           echo "Deploying version ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }} environment..." 
   QA_Deploy:
     needs: build
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        operating-system: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
     environment: QA
     if: ${{ github.event.inputs.environment == 'QA' }}
     steps:
@@ -107,7 +115,11 @@ jobs:
         run: echo "Deploying ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }} environment..." 
   PROD_Deploy:
     needs: build  
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        operating-system: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
     environment: PROD
     if: ${{ github.event.inputs.environment == 'PROD' }}
     steps:

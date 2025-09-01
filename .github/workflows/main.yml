@@ -21,7 +21,7 @@ jobs:
   lint:
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version:  [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
@@ -39,7 +39,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     needs: [lint, test]
     runs-on: ${{ matrix.operating-system }}
@@ -63,7 +63,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
@@ -81,7 +81,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: DEV
@@ -100,7 +100,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: QA
@@ -118,7 +118,7 @@ jobs:
     needs: build  
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: PROD

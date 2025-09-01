@@ -1,5 +1,5 @@
-name: Run a matrix build on Node 14, 16, 18
-description: Run a matrix build on Node 14, 16, 18
+name: Conditional steps
+description: Run step only if branch == `main`
 on:
   push:
   workflow_dispatch:
@@ -43,6 +43,7 @@ jobs:
         operating-system: [ubuntu-latest]
     needs: [lint, test]
     runs-on: ${{ matrix.operating-system }}
+    if: ${{ github.ref_name == 'main'}}
     steps: 
       - name: Checkout code
         uses: actions/checkout@v4

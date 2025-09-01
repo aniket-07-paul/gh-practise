@@ -1,4 +1,4 @@
-name: Conditional steps in feature branch
+name: Implementing Conditional steps in feature branch
 description: Run step only if branch == `main`
 on:
   push:

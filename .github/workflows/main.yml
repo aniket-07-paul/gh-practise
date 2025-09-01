@@ -1,5 +1,5 @@
-name: Conditional steps in feature branch
-description: Run step only if branch == `main`
+name: Matrix + OS runners
+description: Run job on Ubuntu, Windows, and macOS
 on:
   push:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     needs: [lint, test]
     runs-on: ${{ matrix.operating-system }}
     if: ${{ github.ref_name == 'main'}}
@@ -64,7 +64,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
@@ -82,7 +82,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: DEV
     if: ${{ github.event.inputs.environment == 'DEV' }}
@@ -101,7 +101,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: QA
     if: ${{ github.event.inputs.environment == 'QA' }}
@@ -119,7 +119,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.operating-system }}
     environment: PROD
     if: ${{ github.event.inputs.environment == 'PROD' }}

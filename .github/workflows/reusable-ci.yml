@@ -1,0 +1,57 @@
+name: Reusable workflow
+description: A reusable CI workflow for linting, building, and testing code.
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version to use'
+        required: true
+        default: '16'
+        type: string
+      operating-system:
+        description: 'Operating system to run the job on'
+        required: true
+        default: 'ubuntu-latest'
+        type: string
+jobs:
+  lint:
+    runs-on: ${{ inputs['operating-system'] }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs['node-version'] }}
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Linting
+        run: npm run lint
+  test:
+    runs-on: ${{ inputs['operating-system'] }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs['node-version'] }}
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+  build:
+    runs-on: ${{ inputs['operating-system'] }}
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs['node-version'] }}
+        run: | 
+          npm ci
+          npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-build-${{ inputs['operating-system'] }}-${{ inputs['node-version'] }}
+          path: dist

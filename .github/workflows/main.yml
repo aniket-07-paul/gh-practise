@@ -22,14 +22,11 @@ jobs:
       matrix:
         node-version:  [16, 18]
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.operating-system }}
     if: ${{ github.ref_name == 'main' }}
-    steps:
-      - name: Run Reusable CI Workflow
-        uses: ./.github/workflows/reusable-ci.yml
-        with:
-          node-version: ${{ matrix.node-version }}
-          operating-system: ${{ matrix.operating-system }}
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      node-version: ${{ matrix.node-version }}
+      operating-system: ${{ matrix.operating-system }}
   DEV_Deploy:
     needs: ci
     strategy:

@@ -31,7 +31,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           operating-system: ${{ matrix.operating-system }}
   DEV_Deploy:
-    needs: build
+    needs: ci
     strategy:
       matrix:
         node-version: [16, 18]
@@ -50,7 +50,7 @@ jobs:
         run: |
           echo "Deploying version ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }} environment..." 
   QA_Deploy:
-    needs: build
+    needs: ci
     strategy:
       matrix:
         node-version: [16, 18]
@@ -68,7 +68,7 @@ jobs:
       - name: Deploy to QA environment
         run: echo "Deploying ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }} environment..." 
   PROD_Deploy:
-    needs: build  
+    needs: ci  
     strategy:
       matrix:
         node-version: [16, 18]

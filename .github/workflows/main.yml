@@ -59,7 +59,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: website-build
+          name: website-build-${{ matrix.operating-system }}-${{ matrix.node-version }}
       - name: listing out artifacts
         run: ls
       - name: Deploy to QA environment
@@ -77,7 +77,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: website-build
+          name: website-build-${{ matrix.operating-system }}-${{ matrix.node-version }}
       - name: listing out artifacts
         run: ls
       - name: Deploy to PROD environment

@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Node Build Action
-        uses: ./.github/actions/node-build
+        uses: ./.github/actions/node-build/action.yml
         with:
           node-version: '18'
       - name: Upload build artifacts

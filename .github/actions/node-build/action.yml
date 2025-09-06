@@ -17,5 +17,7 @@ runs:
         node-version: ${{ inputs['node-version'] }}
     - name: Install Dependencies
       run: npm ci
+      shell: bash
     - name: Build Project
       run: npm run build 
+      shell: bash

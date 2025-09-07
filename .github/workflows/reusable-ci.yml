@@ -39,6 +39,7 @@ jobs:
       - name: Run Tests
         run: npm test
   build:
+    needs: [lint, test]
     runs-on: ${{ inputs['operating-system'] }}
     steps: 
       - name: Checkout code

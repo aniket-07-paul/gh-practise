@@ -1,0 +1,24 @@
+name: Composite Node Build Action
+description: A composite action to set up Node.js, install dependencies, and build the project.
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: true
+    default: '16'
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs['node-version'] }}
+    - name: Install Dependencies
+      run: npm ci
+      shell: bash
+    - name: Build Project
+      run: npm run build 
+      shell: bash
+

@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List .github/actions contents
-        run: ls -R .github/actions
+        run: ls -a 
       - name: Node Build Action
         uses: ./.github/actions/node-build
         with:

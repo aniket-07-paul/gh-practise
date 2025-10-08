@@ -34,8 +34,10 @@ jobs:
     needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: List .github/actions contents
-        run: ls -a 
+        run: ls -R ./.github/actions
       - name: Node Build Action
         uses: ./.github/actions/node-build
         with:

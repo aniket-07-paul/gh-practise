@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: {{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'DEV' }}
     steps:
       - name: Deploy to github pages using DEV environment
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: {{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'QA' }}
     steps:
       - name: Deploy to github pages using QA environment
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: {{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'PROD' }}
     steps:
       - name: Deploy to github pages using PROD environment

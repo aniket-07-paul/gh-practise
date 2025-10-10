@@ -50,7 +50,7 @@ jobs:
         with:
           node-version: '18'
       - name: Upload artifacts to github pages
-        uses:  actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           name: website-build
           path: dist

@@ -10,5 +10,5 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.js',
   },
-  base: 'https://github.com/aniket-07-paul/gh-practise/',
+  base: '/gh-practise/',
 });

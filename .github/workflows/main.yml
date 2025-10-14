@@ -75,7 +75,7 @@ jobs:
     #     operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: website-build
       url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'DEV' }}
     steps:
@@ -91,7 +91,7 @@ jobs:
     #     operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: website-build
       url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'QA' }}
     steps:
@@ -106,7 +106,7 @@ jobs:
     #     operating-system: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: website-build
       url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.event.inputs.deploy_env == 'PROD' }}
     steps:
